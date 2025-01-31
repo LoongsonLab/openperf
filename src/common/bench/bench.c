@@ -3,7 +3,7 @@
 #include <klib-macros.h>
 #include <klib.h>
 
-uint64_t uptime() { return (io_read(AM_TIMER_UPTIME).us); }
+// uint64_t uptime() { return (io_read(AM_TIMER_UPTIME).us); }
 
 char *format_time(uint64_t us) {
 

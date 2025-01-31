@@ -88,7 +88,7 @@ void x264_log_default( void *p_unused, int i_level, const char *psz_fmt, va_list
 
     for(int i = 0; s[i] != '\0'; i++)
     {
-        putch(s[i]);
+        putc(s[i]);
     }
         
 }

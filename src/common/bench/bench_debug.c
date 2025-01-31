@@ -432,7 +432,7 @@ int bench_printf(const char *fmt, ...) {
   int length = bench_vsprintf(s, fmt, arg);
   va_end(arg);
   for (int i = 0; s[i] != '\0'; i++) {
-    putch(s[i]);
+    putc(s[i]);
   }
   return length;
 }

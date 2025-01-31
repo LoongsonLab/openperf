@@ -1,3 +1,5 @@
 NAME := soft-fp
 SRCS = $(shell find . -name "*.c")
-include $(AM_HOME)/Makefile
+INC_DIR += $(AM_HOME)/libs/klib/include
+
+include $(AM_HOME)/Makefile.lib

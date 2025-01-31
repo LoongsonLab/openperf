@@ -16,8 +16,8 @@ long long strtoll(const char *pstart, char **pend, int base);
 double strtod(const char *pstart, char **pend);
 long double strtold(const char *pstart, char **pend);
 float strtof(const char *pstart, char **pend);
-char *strchr(const char *s, const char ch);
-char *strstr(const char *dest, const char *src);
-char *strrchr(const char *s, const char ch);
+// char *strchr(const char *s, const char ch);
+// char *strstr(const char *dest, const char *src);
+// char *strrchr(const char *s, const char ch);
 
 #endif

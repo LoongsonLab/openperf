@@ -1,7 +1,8 @@
 NAME := openlibm
 SRCS += $(shell find ./src -name "*.c")
-INC_PATH += $(shell realpath ./src) \
+INC_DIR += $(shell realpath ./src) \
 						$(shell realpath ./include)
+INC_DIR += $(AM_HOME)/libs/klib/include
 
-include $(AM_HOME)/Makefile
+include $(AM_HOME)/Makefile.lib
 

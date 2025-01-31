@@ -4,7 +4,7 @@
 #include <klib-macros.h>
 #include <klib.h>
 #include <stdint.h>
-#include <stdio.h>
+// #include <stdio.h>
 
 extern uint8_t ramdisk_start;
 extern uint8_t ramdisk_end;

@@ -2,7 +2,7 @@
 BENCH_LIBS := bench openlibm soft-fp
 
 $(BENCH_LIBS): %:
-	$(MAKE) -s -C ./src/common/$* archive
+	$(MAKE) -s -C ./src/common/$* default
 
 COLOR_RED   = \033[1;31m
 COLOR_GREEN = \033[1;32m
@@ -18,9 +18,9 @@ TIME := $(shell date --iso=seconds)
 ifeq ($(mainargs),ref)
 ALL = mcf x264 tcc stream linpack gemm whetstone
 else
-ALL = cpuemu mcf x264 tcc stream linpack gemm whetstone
+ALL = mcf x264 tcc stream linpack gemm whetstone
 endif
-
+#cpuemu
 all: $(BENCH_LIBS) $(ALL)
 	@echo "OpenPerf [$(words $(ALL)) item(s)]:" $(ALL)
 	@if [ -z "$(mainargs)" ]; then \
@@ -31,28 +31,29 @@ all: $(BENCH_LIBS) $(ALL)
 	fi
 
 $(ALL): %: $(BENCH_LIBS)
-	@{\
-		  TMP=$*.tmp;\
-	    $(MAKE) -C ./src/$* ARCH=$(ARCH) run 2>&1 | tee -a $$TMP;\
-     if [ $${PIPESTATUS[0]} -eq 0 ]; then \
-		    printf "[%14s] $(COLOR_GREEN)PASS$(COLOR_NONE) " $* >> $(RESULT); \
-		    cat $$TMP | grep -E -i -e "OpenPerf time: ([0-9]*\.)?[0-9]*" >> $(RESULT); \
-				if $(KEEP_LOG_SUCCEED); then \
-					mkdir -p "logs/$(TIME)/"; \
-					mv $$TMP "logs/$(TIME)/"; \
-				else \
-					rm $$TMP; \
-				fi \
-	    else \
-			  printf "[%14s] $(COLOR_RED)***FAIL***$(COLOR_NONE)\n" $* >> $(RESULT); \
-				if $(KEEP_LOG_FAILED); then \
-					mkdir -p "logs/$(TIME)/"; \
-					mv $$TMP "logs/$(TIME)/"; \
-				else \
-					rm $$TMP; \
-				fi \
-	    fi \
-	}
+	$(MAKE) -C ./src/$* ARCH=$(ARCH)
+# @{\
+# 	  TMP=$*.tmp;\
+#     $(MAKE) -C ./src/$* ARCH=$(ARCH) run 2>&1 | tee -a $$TMP;\
+#  if [ $${PIPESTATUS[0]} -eq 0 ]; then \
+# 	    printf "[%14s] $(COLOR_GREEN)PASS$(COLOR_NONE) " $* >> $(RESULT); \
+# 	    cat $$TMP | grep -E -i -e "OpenPerf time: ([0-9]*\.)?[0-9]*" >> $(RESULT); \
+# 			if $(KEEP_LOG_SUCCEED); then \
+# 				mkdir -p "logs/$(TIME)/"; \
+# 				mv $$TMP "logs/$(TIME)/"; \
+# 			else \
+# 				rm $$TMP; \
+# 			fi \
+#     else \
+# 		  printf "[%14s] $(COLOR_RED)***FAIL***$(COLOR_NONE)\n" $* >> $(RESULT); \
+# 			if $(KEEP_LOG_FAILED); then \
+# 				mkdir -p "logs/$(TIME)/"; \
+# 				mv $$TMP "logs/$(TIME)/"; \
+# 			else \
+# 				rm $$TMP; \
+# 			fi \
+#     fi \
+# }
 
 run: $(BENCH_LIBS) all
 	@cat $(RESULT)

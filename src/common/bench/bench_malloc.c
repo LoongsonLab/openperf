@@ -52,7 +52,7 @@ static void *malloc_base() {
 
 // We need this function because the variable `heap` is used
 // and initialized at runtime.
-void bench_malloc_init() { program_break = (intptr_t)heap.start; }
+void bench_malloc_init() { program_break = (intptr_t)_heap.start; }
 
 static Chunk malloc_chunk_find(size_t s, Chunk *heap) {
   Chunk c = malloc_base();
@@ -153,4 +153,4 @@ void *bench_realloc(void *ptr, size_t size) {
   return newptr;
 }
 
-void bench_all_free() { program_break = (intptr_t)heap.start; }
+void bench_all_free() { program_break = (intptr_t)_heap.start; }

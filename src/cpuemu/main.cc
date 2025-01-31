@@ -14,7 +14,7 @@ extern bench_cpuemu_config config;
 int main(const char *args) {
 
   bench_malloc_init();
-  ioe_init();
+  _ioe_init();
 
   int pass = 1;
 

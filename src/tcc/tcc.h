@@ -52,7 +52,7 @@
 #define puts(s)                                                                \
   ({                                                                           \
     for (const char *p = s; *p; p++)                                           \
-      putch(*p);                                                               \
+      putc(*p);                                                               \
   })
 
 #ifndef PAGESIZE

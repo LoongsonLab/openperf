@@ -1,9 +1,10 @@
 #include <bench_debug.h>
 #include <input.h>
 #include <klib.h>
+#include <klib-macros.h>
 #include <mcf.h>
 #include <pqueue.h>
-#include <stdio.h>
+// #include <stdio.h>
 
 void MCF_init(MCF *mcf) {
   mcf->no_node = 0;

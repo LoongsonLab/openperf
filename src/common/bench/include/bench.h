@@ -8,7 +8,7 @@ extern "C" {
 #include <stddef.h>
 #include <stdint.h>
 
-uint64_t uptime();
+// uint64_t uptime();
 char *format_time(uint64_t us);
 uint32_t checksum(void *start, void *end);
 void bench_srand(uint32_t _seed);

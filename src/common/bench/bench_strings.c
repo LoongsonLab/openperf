@@ -380,39 +380,39 @@ float strtof(const char *pstart, char **pend) {
   return (sign * result);
 }
 
-char *strchr(const char *s, const char ch) {
-  if (NULL == s)
-    return NULL;
+// char *strchr(const char *s, const char ch) {
+//   if (NULL == s)
+//     return NULL;
 
-  const char *pSrc = s;
-  while ('\0' != *pSrc) {
-    if (*pSrc == ch) {
-      return (char *)pSrc;
-    }
-    pSrc++;
-  }
-  if (ch == 0) {
-    return (char *)pSrc;
-  }
-  return NULL;
-}
+//   const char *pSrc = s;
+//   while ('\0' != *pSrc) {
+//     if (*pSrc == ch) {
+//       return (char *)pSrc;
+//     }
+//     pSrc++;
+//   }
+//   if (ch == 0) {
+//     return (char *)pSrc;
+//   }
+//   return NULL;
+// }
 
-char *strrchr(const char *s, const char ch) {
-  if (s == NULL) {
-    return NULL;
-  }
+// char *strrchr(const char *s, const char ch) {
+//   if (s == NULL) {
+//     return NULL;
+//   }
 
-  char *p_char = NULL;
-  while (*s != '\0') {
-    if (*s == ch) {
-      p_char = (char *)s;
-    }
-    s++;
-  }
-  if (ch == 0) {
-    p_char = (char *)s;
-  }
-  return p_char;
-}
+//   char *p_char = NULL;
+//   while (*s != '\0') {
+//     if (*s == ch) {
+//       p_char = (char *)s;
+//     }
+//     s++;
+//   }
+//   if (ch == 0) {
+//     p_char = (char *)s;
+//   }
+//   return p_char;
+// }
 
-char *strstr(const char *dest, const char *src) { assert(0); }
+// char *strstr(const char *dest, const char *src) { assert(0); }
